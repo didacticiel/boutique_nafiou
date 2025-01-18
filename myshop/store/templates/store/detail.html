@@ -1,0 +1,123 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+<title>Détail du Produit</title>
+
+<section class="section" id="product">
+    <div class="container">
+        <div class="row">
+            <!-- Image du produit -->
+            <div class="col-lg-4">
+                <div class="left-images">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                </div>
+            </div>
+
+            <!-- Détails du produit -->
+            <div class="col-lg-8">
+                <div class="right-content">
+                    <h4>{{ product.name }}</h4>
+                    <span class="price" style="color:red;">{{ product.price }} Fcfa</span>
+                    <span>{{ product.description }}</span>
+
+                    <!-- Formulaire pour gérer la quantité -->
+                    <div class="quantity-content">
+                        <div class="left-content">
+                            <h6 style="weight:450px;">Quantité :</h6>
+                        </div>
+                        <div class="right-content">
+                            <form id="quantity-form" method="post" action="{% url 'detail' product.id %}">
+                                {% csrf_token %}
+                                <div class="quantity buttons_added">
+                                    <button type="button" id="minus-btn" class="minus">-</button>
+                                    <input type="hidden" name="product" value="{{ product.id }}">
+                                    <input type="number" id="quantity-input" name="quantity" 
+                                           value="{{ cart|get_item:product.id|default:1 }}" 
+                                           step="1" min="0" class="input-text qty text">
+                                    <button type="button" id="plus-btn" class="plus">+</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>                    
+
+                    <!-- Total du panier -->
+                    <div class="total">
+                        <h3 style="weight:350px;">Total Panier: <span id="cart-total" style="color:red; weight:850px;">{{ cart_total }}</span> Fcfa</h3>
+                        <div class="main-border-button">
+                            <a href="{% url 'checkout' %}">Valider le panier</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Script JavaScript pour la mise à jour en temps réel -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const minusBtn = document.getElementById('minus-btn');
+    const plusBtn = document.getElementById('plus-btn');
+    const quantityInput = document.getElementById('quantity-input');
+    const cartTotal = document.getElementById('cart-total');
+    const form = document.getElementById('quantity-form');
+
+    function updateQuantity(change) {
+        let quantity = parseInt(quantityInput.value) || 0; // Initialiser à 0 si non défini
+        quantity += change;
+        if (quantity < 0) quantity = 0;  // La quantité ne peut pas être négative
+        quantityInput.value = quantity;
+
+        // Envoyer les données via AJAX
+        const formData = new FormData(form);
+        formData.set('quantity', quantity);
+
+        // Définir 'remove' sur 'true' si la quantité est 0
+        formData.set('remove', quantity === 0 ? 'true' : 'false');
+
+        fetch("{% url 'detail' product.id %}", {
+            method: 'POST',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': '{{ csrf_token }}',
+            },
+            body: formData,
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erreur dans la réponse du serveur.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.error) {
+                alert(data.error);
+            } else {
+                quantityInput.value = data.quantity; // Mettre à jour l'affichage de la quantité
+                cartTotal.textContent = data.cart_total; // Mettre à jour le total du panier
+
+                // Si le produit est retiré (quantité 0), recharger la page pour rafraîchir le panier
+                if (data.quantity === 0) {
+                    location.reload();
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            alert('Une erreur est survenue. Veuillez réessayer.');
+        });
+    }
+
+    minusBtn.addEventListener('click', function() {
+        updateQuantity(-1);  // Diminuer la quantité
+    });
+
+    plusBtn.addEventListener('click', function() {
+        updateQuantity(1);  // Augmenter la quantité
+    });
+});
+</script>
+
+{% endblock %}

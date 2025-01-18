@@ -1,0 +1,358 @@
+{% extends 'store/base.html' %}
+
+{% load custom_filters %}
+{% load static %}
+{% block content %}
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner" id="top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <div class="thumb">
+                            <div class="inner-content">
+                                <h4>Nous Sommes ART DU CHIC BAZIN</h4>
+                                <span>Élégance, tradition &amp; créativité en tissu bazin</span>
+                                <div class="main-border-button">
+                                    <a href="{% url 'all_product' %}">Découvrez Nos Collections</a>
+                                </div>
+
+                            </div>
+                            <img src="{% static 'assets/images/left-banner-image.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Femmes</h4>
+                                            <span>Meilleurs vêtements pour femmes</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Femmes</h4>
+                                                <p>Sublimez votre élégance avec notre collection exclusive de vêtements en tissu bazin.</p>
+                                                <div class="main-border-button">
+                                                    <a href="{% url 'femme' %}">Découvrir Plus</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="{% static 'assets/images/baner-right-image-01.jpg' %}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Hommes</h4>
+                                            <span>Vêtements d'exception pour hommes</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Hommes</h4>
+                                                <p>Affirmez votre style avec notre collection élégante de vêtements en tissu bazin.</p>
+                                                <div class="main-border-button">
+                                                    <a href="{% url 'homme' %}">Découvrir Plus</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <img src="{% static 'assets/images/baner-right-image-02.jpg' %}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Enfants</h4>
+                                            <span>Des tenues élégantes pour les petits</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Enfants</h4>
+                                                <p>Habillez vos enfants avec style grâce à notre collection en tissu bazin colorée et raffinée.</p>
+                                                <div class="main-border-button">
+                                                    <a href="{% url 'enfant' %}">Découvrir Plus</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <img src="{% static 'assets/images/baner-right-image-03.jpg' %}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-first-image">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>Bazins</h4>
+                                            <span>Les tendances incontournables en bazin</span>
+                                        </div>
+                                        <div class="hover-content">
+                                            <div class="inner">
+                                                <h4>Bazins</h4>
+                                                <p>Découvrez les dernières tendances et créations en tissu bazin, alliant tradition et modernité.</p>
+                                                <div class="main-border-button">
+                                                    <a href="{% url 'bazin' %}">Découvrir Plus</a>
+                                                </div>
+                                            </div>
+                                        </div>                                        
+                                        <img src="{% static 'assets/images/baner-right-image-04.jpg' %}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+
+     <!-- ***** Bazin Area Starts ***** -->
+    <section class="section" id="men">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Dernières Tendances Bazin</h2>
+                        <span>L'attention aux détails fait toute la différence avec nos collections de bazin.</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="men-item-carousel">
+                        <div class="owl-men-item owl-carousel">
+                            {% for baz in bazin %}
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="{% url 'detail' baz.id %}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img src="{{ baz.image.url }}" alt="Men Product">
+                                </div>
+                                <div class="down-content">
+                                    <h4>{{ baz.name }}</h4>
+                                    <span class="price" style='color:red;'>{{ baz.price }} Fcfa </span>
+                                    <div class="main-border-button"><a href="{% url 'detail' baz.id %}">Voir Detail du Produit</a></div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+    <!-- ***** bazin Area Ends ***** -->
+
+    <!-- ***** Men Area Starts ***** -->
+    <section class="section" id="men">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Dernières Tendances Pour Hommes</h2>
+                        <span>L'attention aux détails fait toute la différence chez ART DU CHIC BAZIN.</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="men-item-carousel">
+                        <div class="owl-men-item owl-carousel">
+                            {% for hom in homme %}
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="{% url 'detail' hom.id %}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img src="{{ hom.image.url }}" alt="Men Product">
+                                </div>
+                                <div class="down-content">
+                                    <h4>{{ hom.name }}</h4>
+                                    <span class="price" style='color:red;'>{{ hom.price }} Fcfa </span>
+                                    <div class="main-border-button"><a href="{% url 'detail' hom.id %}">Voir Detail du Produit</a></div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+    <!-- ***** Men Area Ends ***** -->
+
+    <!-- ***** Women Area Starts ***** -->
+    <section class="section" id="women">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Dernières Tendances Pour Femmes</h2>
+                        <span>L'attention aux détails est ce qui rend nos collections en bazin uniques et exceptionnelles.</span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="women-item-carousel">
+                        <div class="owl-women-item owl-carousel">
+                            {% for fem in femme %}
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="{% url 'detail' fem.id %}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="{% url 'detail' fem.id %}"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="{% url 'detail' fem.id %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img src="{{ fem.image.url }}" alt="Women Product">
+                                </div>
+                                <div class="down-content">
+                                    <h4>{{ fem.name }}</h4>
+                                    <span class="price" style='color:red;'>{{ fem.price }} Fcfa </span>
+                                    <div class="main-border-button"><a href="{% url 'detail' fem.id %}">Voir Detail du Produit</a></div>
+                                    <ul class="stars">
+                                        {% for i in 5|range_filter %}
+                                        {% comment %} <li><i class="fa fa-star"></i></li> {% endcomment %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+    <!-- ***** Women Area Ends ***** -->
+
+    <!-- ***** Kids Area Starts ***** -->
+    <section class="section" id="kids">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Dernières Tendances Pour Enfants</h2>
+                        <span>L'attention aux détails fait de nos vêtements en bazin un choix unique et élégant pour vos enfants.</span>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="kid-item-carousel">
+                        <div class="owl-kid-item owl-carousel">
+                            {% for kid in enfant %}
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="{% url 'detail' kid.id %}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <img src="{{ kid.image.url }}" alt="Kid Product">
+                                </div>
+                                <div class="down-content">
+                                    <h4>{{ kid.name }}</h4>
+                                    <span class="price" style='color:red;'>{{ kid.price }} Fcfa </span>
+                                    <div class="main-border-button"><a href="{% url 'detail' kid.id %}">Voir Detail du Produit</a></div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ***** Kids Area Ends ***** -->
+
+    <!-- ***** Explore Area Starts ***** -->
+    <section class="section" id="explore">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="left-content">
+                        <h2>Explorez Nos Tissus Bazin</h2>
+                        <span>Découvrez notre collection de tissus bazin de haute qualité, cousus ou non cousus, idéals pour des créations élégantes et de haute couture.</span>
+                        <div class="quote">
+                            <i class="fa fa-quote-left"></i><p>Il est interdit de redistribuer ce fichier ZIP du modèle sur d'autres sites web.</p>
+                        </div>
+                        <p>Nous vous offrons une large gamme de tissus bazin, parfaits pour toutes vos créations, des plus simples aux plus sophistiquées. Nos produits sont conçus pour satisfaire les plus hautes exigences de style et de qualité.</p>
+                        <p>Si nos tissus bazin vous intéressent pour vos projets de mode ou votre boutique, vous pouvez <a rel="nofollow" href="https://wa.me/+2290140445541" target="_blank">nous contacter</a> via WhatsApp. Merci de partager nos produits avec vos proches !</p>
+                        <div class="main-border-button">
+                            <a href="{% url 'all_product' %}">Découvrir Plus</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="right-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="leather">
+                                    <h4>Leather Bags</h4>
+                                    <span>Dernières Collections</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="first-image">
+                                    <img src="{% static 'assets/images/explore-image-01.jpg' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="second-image">
+                                    <img src="{% static 'assets/images/explore-image-01.jpg' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="types">
+                                    <h4>Different Types</h4>
+                                    <span>Over 304 Products</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Explore Area Ends ***** -->
+
+
+
+{% endblock %}

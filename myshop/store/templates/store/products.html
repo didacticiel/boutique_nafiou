@@ -1,0 +1,91 @@
+{% extends 'store/base.html' %}
+{% block content %}
+
+
+<title> Liste des Produits</title>
+
+<!-- ***** Main Banner Area Start ***** -->
+<div class="page-heading" id="top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="inner-content">
+                    <h2>Découvrez Nos Produits</h2>
+                    <span>Tissus Bazin de Haute Couture – Élégance et Style à Chaque Couture</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***** Main Banner Area End ***** -->
+
+
+
+    <!-- ***** Products Area Starts ***** -->
+    <section class="section" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h2>Nos Derniers Produits</h2>
+                        <span>Découvrez toute notre collection de tissus bazin, cousus ou non cousus, pour des créations uniques.</span>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% for product in products %}
+                <div class="col-lg-4">
+                    
+                    <div class="item">
+                        <div class="thumb">
+                            <div class="hover-content">
+                                <ul>
+                                    <li><a href="{% url 'detail' product.id %}"><i class="fa fa-eye"></i></a></li>
+                                    <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <img src="{{ product.image.url }}" alt="">
+                        </div>
+                        <div class="down-content">
+                            <h4>{{ product.name }}</h4>
+                            <span style="color:red;">{{ product.price }} Fcfa</span>
+                            <!-- <ul class="stars">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="col-lg-12">
+                    <div class="pagination">
+                        <ul>
+                            {% if products.has_previous %}
+                                <li><a href="?page={{ products.previous_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">&lt;</a></li>
+                            {% endif %}
+                            
+                            {% for num in products.paginator.page_range %}
+                                <li class="{% if products.number == num %}active{% endif %}">
+                                    <a href="?page={{ num }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">{{ num }}</a>
+                                </li>
+                            {% endfor %}
+                            
+                            {% if products.has_next %}
+                                <li><a href="?page={{ products.next_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">&gt;</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </section>
+    <!-- ***** Products Area Ends ***** -->
+
+{% endblock %}
+    

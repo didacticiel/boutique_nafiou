@@ -1,0 +1,80 @@
+{% extends 'store/base.html' %}
+{% block content %}
+
+<title>Liste des Bazins</title>
+
+<!-- ***** Main Banner Area Start ***** -->
+<div class="page-heading" id="top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="inner-content">
+                    <h2>Découvrez Nos Tissus Bazin</h2>
+                    <span>Des tissus bazin de haute qualité, parfaits pour des créations élégantes et intemporelles.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***** Main Banner Area End ***** -->
+
+<!-- ***** Products Area Starts ***** -->
+<section class="section" id="products">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Nos Derniers Produits</h2>
+                    <span>Découvrez toute notre collection de tissus bazin, parfaits pour des créations élégantes et modernes.</span>
+                </div>                    
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for baz in bazins %}
+            <div class="col-lg-4">
+                <div class="item">
+                    <div class="thumb">
+                        <div class="hover-content">
+                            <ul>
+                                <li><a href="{% url 'detail' baz.id %}"><i class="fa fa-eye"></i></a></li>
+                                <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a></li>
+                            </ul>
+                        </div>
+                        <img src="{{ baz.image.url }}" alt="">
+                    </div>
+                    <div class="down-content">
+                        <h4>{{ baz.name }}</h4>
+                        <span style='color:red;'>{{ baz.price }} Fcfa</span>
+                        <div class="main-border-button"><a href="{% url 'detail' baz.id %}">Voir Detail du Produit</a></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="col-lg-12">
+                <div class="pagination">
+                    <ul>
+                        {% if bazins.has_previous %}
+                            <li><a href="?page={{ bazins.previous_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">&lt;</a></li>
+                        {% endif %}
+                        
+                        {% for num in bazins.paginator.page_range %}
+                            <li class="{% if bazins.number == num %}active{% endif %}">
+                                <a href="?page={{ num }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">{{ num }}</a>
+                            </li>
+                        {% endfor %}
+                        
+                        {% if bazins.has_next %}
+                            <li><a href="?page={{ bazins.next_page_number }}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">&gt;</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>                
+        </div>
+    </div>
+</section>
+<!-- ***** Products Area Ends ***** -->
+
+{% endblock %}

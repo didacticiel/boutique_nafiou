@@ -1,0 +1,8 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="container text-center" style="margin: 100px; ">
+    <h1>Commande Confirmée</h1>
+    <p>Votre commande a été validée avec succès ! Merci pour votre achat.</p>
+    <a href="{% url 'homepage' %}" class="btn btn-primary">Retour à l'accueil</a>
+</div>
+{% endblock %}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+
+  <head>
+    
+     
+     
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Art du chic bazin{% endblock %}</title>
+
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{% block og_url %}https://devstreetcenter.pythonanywhere.com/{% endblock %}">
+    <meta property="og:image:alt" content="Description de l'image pour les réseaux sociaux">
+
+    <meta property="og:title" content="{% block og_title %}Art du chic bazin{% endblock %}">
+    <meta property="og:description" content="Bazin, bazin de qualité supérieur chez Art du chic bazin.Visitez art du chic bazin pour voir la différence,bazin gold,bazin getzer,bazin frafranis ordinateur,bazin super wifi,bazin good-luck,bazin victoire magique,bazin vip teinté,
+    getzner ms bonheur,bazin moin cher,bazin à calavi moin cher">
+    <meta content="Bazin,au Bénin,bazin de qualité au bénin,bazin cousu,bazin du mali,bazin à cotonou,bazin getzer,bazin frafranis ordinateur,bazin super wifi,bazin good-luck,bazin victoire magique,bazin vip teinté,getzner ms bonheur,bazin moin cher,bazin à calavi moin cher" name="keywords">
+    <meta name="robots" content="index, follow">
+    <meta property="og:image" content="{% block og_image %}{% static 'img/logo4.png' %}{% endblock %}">
+    <meta name="google-site-verification" content="1GFsFeLlizmFyOugXT1b9hlq7f5a0JPrTECw7DVIBxE" />
+    <meta name="keywords" content="Bazin, bazin de qualité supérieur chez Art du chic bazin.Visitez art du chic bazin pour voir la différence,bazin gold,bazin getzer,bazin frafranis ordinateur,bazin super wifi,bazin good-luck,bazin victoire magique,bazin vip teinté,
+    getzner ms bonheur,bazin moin cher,bazin à calavi moin cher">
+
+
+
+    <!-- Vos balises supplémentaires pour le référencement -->
+    <meta name="author" content="Hadalou Abdoulaye">
+    <meta name="copyright" content="© 2023 Dev Street Center">
+
+    <link rel="canonical" href="{% block canonical_url %}https://devstreetcenter.pythonanywhere.com/{% endblock %}" />
+    <link rel="alternate" type="application/rss+xml" title="DevStreetCenter » Flux" href="{% block rss_feed_url %}https://devstreetcenter.pythonanywhere.com/feed/{% endblock %}" />
+
+
+     <!-- lien de l'image dans la barre d'adresse google  -->
+     <link rel="icon" type="image/png" href="{% static 'assets/images/logo.png' %}">
+     <!-- Favicons -->
+     <link href="{% static 'assets/images/logo.png' %}" rel="icon">
+     <link href="{% static 'assets/images/logo.png' %}" rel="apple-touch-icon">
+
+
+    
+
+
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+
+
+    
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-awesome.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-hexashop.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/owl-carousel.css' %}">
+
+    <link rel="stylesheet" href="{% static 'assets/css/lightbox.css' %}">
+<!--
+
+TemplateMo 571 Hexashop
+
+https://templatemo.com/tm-571-hexashop
+
+-->
+    </head>
+    
+    <body>
+    
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+    
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="{% static 'assets/images/logo.png' %}">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="/" class="active">Home</a></li>
+                            <li><a href="{% url 'all_product' %}">Products</a></li>
+                            <li><a href="{% url 'bazin' %}">Bazin page</a></li>
+                            {% comment %} <li class="scroll-to-section"><a href="#men">Nos Bazin</a></li> {% endcomment %}
+                            {% comment %} <li class="scroll-to-section"><a href="#men">Men's</a></li>
+                            <li class="scroll-to-section"><a href="#women">Women's</a></li>
+                            <li class="scroll-to-section"><a href="#kids">Kid's</a></li> {% endcomment %}
+                            <li class="submenu">
+                                <a href="javascript:;">Catégories</a>
+                                <ul>
+                                    <li><a href="{% url 'homme' %}">Hommes</a></li>
+                                    <li><a href="{% url 'femme' %}">Femmes</a></li>
+                                    <li><a href="{% url 'enfant' %}">Enfants</a></li>
+                                </ul>
+                            </li>
+                             
+                            {% comment %} <li><a href="{% url 'about' %}">A propos</a></li> {% endcomment %}
+                            <li><a href="{% url 'contact' %}">Nous Contacter</a></li>
+                            {% comment %} <li class="scroll-to-section"><a href="#explore">Explore</a></li> {% endcomment %}
+                            <li class="scroll-to-section">
+                                <a href="#explore" style="color: rgb(13, 123, 219);">
+                                    {% if customer %}
+                                        {{ customer.first_name }} !
+                                    {% endif %}
+                                </a>
+                            </li>
+                            <li class="submenu">
+                                <a href="javascript:;">Connexion</a>
+                                <ul>
+                                    {% if customer %}
+                                    <li><a href="{% url 'logout' %}" style="color: rgb(247, 41, 5);">Déconnexion</a></li>
+                                    {% else %}
+                                    <li><a href="{% url 'login' %}" style="color: rgb(13, 123, 219);">Se Connecter</a></li>
+                                    <li><a href="{% url 'signup' %}" style="color: rgb(13, 123, 219);">S'Inscrire</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+{% block content %}
+{% endblock %}
+    
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="first-item">
+                        <div class="logo">
+                            <img src="{% static 'assets/images/white-logo.png' %}" alt="hexashop ecommerce templatemo">
+                        </div>
+                        <ul>
+                            <li><a href="#">Godomey, Hedomey non loin de LNB au bord des pavés</a></li>
+                            <li><a href="#">artduchicbazin@gmail.com</a></li>
+                            <li><a href="#">+229 01 69 69 69 73</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Shopping &amp; Categories</h4>
+                    <ul>
+
+                        <li><a href="{% url 'all_product' %}">Tout Products</a></li>
+                        <li><a href="{% url 'bazin' %}">Bazin page</a></li>
+                        <li><a href="{% url 'homme' %}">Men’s Shopping</a></li>
+                        <li><a href="{% url 'femme' %}">Women’s Shopping</a></li>
+                        <li><a href="{% url 'enfant' %}">Kid's Shopping</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="/">Homepage</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'about' %}">Help</a></li>
+                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Help &amp; Information</h4>
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">FAQ's</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Tracking ID</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="under-footer">
+                        <p>Copyright © 2025, Ltd. All Rights Reserved. 
+                        
+                        <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a>
+
+                        <br>Distributed By: <a href="https://themewagon.com" target="_blank" title="free & premium responsive templates">ThemeWagon</a></p>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+    <!-- jQuery -->
+    <script src="{% static 'assets/js/jquery-2.1.0.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'assets/js/popper.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugins -->
+    <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+    <script src="{% static 'assets/js/accordions.js' %}"></script>
+    <script src="{% static 'assets/js/datepicker.js' %}"></script>
+    <script src="{% static 'assets/js/scrollreveal.min.js' %}"></script>
+    <script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="{% static 'assets/js/imgfix.min.js' %}"></script> 
+    <script src="{% static 'assets/js/slick.js' %}"></script> 
+    <script src="{% static 'assets/js/lightbox.js' %}"></script> 
+    <script src="{% static 'assets/js/isotope.js' %}"></script> 
+    
+    <!-- Global Init -->
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+                
+            });
+        });
+
+    </script>
+
+  </body>
+</html>

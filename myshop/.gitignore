@@ -1,0 +1,141 @@
+.idea
+.vscode
+#Fichiers DLL compilés/optimisés en octets
+__pycache__/
+*.py[la morue]
+*$py.class
+
+#Extensions C
+*.donc
+
+#Distribution / conditionnement
+.Python
+construire/
+développer-des-oeufs/
+dist/
+Téléchargements/
+œufs/
+.œufs/
+lib/
+lib64/
+les pièces/
+sdist/
+var/
+roues/
+Métadonnées de la roue à pip/
+partager/roues de python/
+*.info-oeuf/
+.installé.cfg
+*.œuf
+MANIFESTE
+
+#PyInstallateur
+#  Habituellement, ces fichiers sont écrits par un script Python à partir d'un modèle
+#  avant que PyInstaller ne construise l'exe, afin d'y injecter la date/d'autres informations.
+*.manifeste
+*.spécification
+
+#Journaux d'installation
+pip-log.txt
+pip-supprimer-ce-répertoire.txt
+
+#Rapports de tests unitaires / de couverture
+htmlcov/
+.tox/
+.nox/
+.couverture
+.couverture.*
+.cache
+nosetests.xml
+couverture.xml
+*.couverture
+*.py,couverture
+.hypothèse/
+.pytest_cache/
+
+#Traductions
+*.mo
+*.pot
+
+#Des trucs sur Django :
+*.enregistrer
+paramètres_local.py
+db.sqlite3
+Journal de bord de SQLite3
+
+#Des trucs de fiole :
+exemple/
+.webassets-cache
+
+#Des trucs décousus :
+.débraillé
+
+#Documentation Sphinx
+documents/_construire/
+
+#PyBuilder
+cible/
+
+#Carnet de notes Jupyter
+.points de contrôle ipynb
+
+#IPython
+profil_par_défaut/
+ipython_config.py
+
+#pyenv
+.python-version
+
+#pipenv
+#   Selon pypa/pipenv#598, il est recommandé d'inclure Pipfile.lock dans le contrôle de version.
+#   Toutefois, en cas de collaboration, s'il existe des dépendances ou des dépendances spécifiques à la plateforme
+#   n'ayant pas de support multiplateforme, pipenv peut installer des dépendances qui ne fonctionnent pas, ou pas
+#   installer toutes les dépendances nécessaires.
+#Fichier Pip.lock
+
+#PEP 582 ; utilisé par exemple par github.com/David-OConnor/pyflow
+__pypackages__/
+
+#Des trucs à base de céleri
+céleri-beat-horaire
+céleribeat.pid
+
+#Fichiers analysés par SageMath
+*.sage.py
+
+#Environnements
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+#Paramètres du projet Spyder
+.projet spyder
+.projet d'espionnage
+
+#Paramètres du projet de corde
+.projet de corde
+
+#Documentation de mkdocs
+/site
+
+#monpy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+#Vérificateur de type de bûcher
+.bûcher/
+
+
+venv/
+media/
+static/
+node/
+__pycache__/
+.env
+.DS_Store
+db.sqlite3
